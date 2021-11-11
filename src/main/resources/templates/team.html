@@ -6,13 +6,20 @@
 </head>
 <body>
 <h3>野球チーム一覧</h3>
-<form th:action="@{/}" method="post">
-<a href="@{}" th:href="@{}">読売ジャイアンツ</a><br>
-<a href="@{}" th:href="@{}">阪神タイガース</a><br>
-<a href="@{}" th:href="@{}">中日ドラゴンズ</a><br>
-<a href="@{}" th:href="@{}">横浜べDeNaベイスターズ</a><br>
-<a href="@{}" th:href="@{}">広島東洋カープ</a><br>
-<a href="@{}" th:href="@{}">東京ヤクルトスワローズ</a><br>
+<form th:action="@{/team/showResult}" method="post">
+
+<!-- スコープに格納したリストを要素の数だけ繰り返す -->
+<table>
+<tr th:each="team : ${teamList}">
+ <td>
+   <a href="result.html" th:href="@{/team/showResult?id=} + ${team.id}">
+   <span th:text="${team.teamName}">dummy</span>
+   </a>
+<tr>
+</table>
+
+
+
 </form>
 </body>
 </html>
